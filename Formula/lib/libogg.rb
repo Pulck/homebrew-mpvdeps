@@ -28,6 +28,10 @@ class Libogg < Formula
   end
 
   def install
+      ENV["MACOSX_DEPLOYMENT_TARGET"] = 14.0
+      ENV["CFLAGS"] = "-mmacosx-version-min=14.0"
+      ENV["LDFLAGS"] = "-mmacosx-version-min=14.0"
+      ENV["CXXFLAGS"] = "-mmacosx-version-min=14.0"
     system "cmake", "-S", ".", "-B", "build", "-DBUILD_SHARED_LIBS=TRUE", *std_cmake_args
     system "cmake", "--build", "build"
     system "cmake", "--install", "build"

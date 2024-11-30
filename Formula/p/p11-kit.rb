@@ -35,6 +35,10 @@ class P11Kit < Formula
   uses_from_macos "libffi", since: :catalina
 
   def install
+      ENV["MACOSX_DEPLOYMENT_TARGET"] = 14.0
+      ENV["CFLAGS"] = "-mmacosx-version-min=14.0"
+      ENV["LDFLAGS"] = "-mmacosx-version-min=14.0"
+      ENV["CXXFLAGS"] = "-mmacosx-version-min=14.0"
     # https://bugs.freedesktop.org/show_bug.cgi?id=91602#c1
     ENV["FAKED_MODE"] = "1"
 

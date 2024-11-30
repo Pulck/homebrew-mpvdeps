@@ -31,6 +31,12 @@ class Libarchive < Formula
   uses_from_macos "zlib"
 
   def install
+      
+      ENV["MACOSX_DEPLOYMENT_TARGET"] = 14.0
+      ENV["CFLAGS"] = "-mmacosx-version-min=14.0"
+      ENV["LDFLAGS"] = "-mmacosx-version-min=14.0"
+      ENV["CXXFLAGS"] = "-mmacosx-version-min=14.0"
+      
     system "./configure", *std_configure_args,
            "--without-lzo2",    # Use lzop binary instead of lzo2 due to GPL
            "--without-nettle",  # xar hashing option but GPLv3

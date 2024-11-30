@@ -26,6 +26,10 @@ class Aribb24 < Formula
   depends_on "libpng"
 
   def install
+      ENV["MACOSX_DEPLOYMENT_TARGET"] = 14.0
+      ENV["CFLAGS"] = "-mmacosx-version-min=14.0"
+      ENV["LDFLAGS"] = "-mmacosx-version-min=14.0"
+      ENV["CXXFLAGS"] = "-mmacosx-version-min=14.0"
     system "./bootstrap"
     system "./configure", "--disable-silent-rules", *std_configure_args
     system "make", "install"

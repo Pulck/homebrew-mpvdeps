@@ -20,6 +20,10 @@ class Icu4cAT74 < Formula
   disable! date: "2025-05-01", because: :versioned_formula
 
   def install
+      ENV["MACOSX_DEPLOYMENT_TARGET"] = 14.0
+      ENV["CFLAGS"] = "-mmacosx-version-min=14.0"
+      ENV["LDFLAGS"] = "-mmacosx-version-min=14.0"
+      ENV["CXXFLAGS"] = "-mmacosx-version-min=14.0"
     args = %w[
       --disable-samples
       --disable-tests

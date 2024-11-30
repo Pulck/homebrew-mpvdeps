@@ -24,6 +24,10 @@ class X265 < Formula
 
   def install
     ENV.runtime_cpu_detection
+    ENV["MACOSX_DEPLOYMENT_TARGET"] = 14.0
+    ENV["CFLAGS"] = "-mmacosx-version-min=14.0"
+    ENV["LDFLAGS"] = "-mmacosx-version-min=14.0"
+    ENV["CXXFLAGS"] = "-mmacosx-version-min=14.0"
     # Build based off the script at ./build/linux/multilib.sh
     args = std_cmake_args + %W[
       -DLINKED_10BIT=ON

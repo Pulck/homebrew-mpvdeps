@@ -17,6 +17,11 @@ class Libvidstab < Formula
     sha256 cellar: :any,                 big_sur:        "2b7d9891009c53a925e971b600bad2a43e5bcca062119b9080e1c5b59e2e25b0"
     sha256 cellar: :any_skip_relocation, x86_64_linux:   "d87451266aa81a807919bb25dec5cb85e2e79eca8fa768dba8c7b74f06e11be9"
   end
+  
+  ENV["MACOSX_DEPLOYMENT_TARGET"] = 14.0
+  ENV["CFLAGS"] = "-mmacosx-version-min=14.0"
+  ENV["LDFLAGS"] = "-mmacosx-version-min=14.0"
+  ENV["CXXFLAGS"] = "-mmacosx-version-min=14.0"
 
   depends_on "cmake" => :build
 

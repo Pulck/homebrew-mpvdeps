@@ -23,6 +23,10 @@ class Libssh < Formula
   uses_from_macos "zlib"
 
   def install
+      ENV["MACOSX_DEPLOYMENT_TARGET"] = 14.0
+      ENV["CFLAGS"] = "-mmacosx-version-min=14.0"
+      ENV["LDFLAGS"] = "-mmacosx-version-min=14.0"
+      ENV["CXXFLAGS"] = "-mmacosx-version-min=14.0"
     args = %w[
       -DBUILD_STATIC_LIB=ON
       -DWITH_SYMBOL_VERSIONING=OFF

@@ -26,6 +26,11 @@ class Aom < Formula
 
   def install
     ENV.runtime_cpu_detection
+    
+    ENV["MACOSX_DEPLOYMENT_TARGET"] = 14.0
+    ENV["CFLAGS"] = "-mmacosx-version-min=14.0"
+    ENV["LDFLAGS"] = "-mmacosx-version-min=14.0"
+    ENV["CXXFLAGS"] = "-mmacosx-version-min=14.0"
 
     args = [
       "-DCMAKE_INSTALL_RPATH=#{rpath}",

@@ -47,6 +47,11 @@ class JpegXl < Formula
   end
 
   def install
+      ENV["MACOSX_DEPLOYMENT_TARGET"] = 14.0
+      ENV["CFLAGS"] = "-mmacosx-version-min=14.0"
+      ENV["LDFLAGS"] = "-mmacosx-version-min=14.0"
+      ENV["CXXFLAGS"] = "-mmacosx-version-min=14.0"
+      
     ENV.append_path "XML_CATALOG_FILES", HOMEBREW_PREFIX/"etc/xml/catalog"
     resources.each { |r| r.stage buildpath/"third_party"/r.name }
     system "cmake", "-S", ".", "-B", "build",

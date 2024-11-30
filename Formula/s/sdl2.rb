@@ -39,6 +39,10 @@ class Sdl2 < Formula
   end
 
   def install
+      ENV["MACOSX_DEPLOYMENT_TARGET"] = 14.0
+      ENV["CFLAGS"] = "-mmacosx-version-min=14.0"
+      ENV["LDFLAGS"] = "-mmacosx-version-min=14.0"
+      ENV["CXXFLAGS"] = "-mmacosx-version-min=14.0"
     # We have to do this because most build scripts assume that all SDL modules
     # are installed to the same prefix. Consequently SDL stuff cannot be
     # keg-only but I doubt that will be needed.

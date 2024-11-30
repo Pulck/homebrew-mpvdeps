@@ -64,6 +64,10 @@ class X264 < Formula
   end
 
   def install
+          ENV["MACOSX_DEPLOYMENT_TARGET"] = 14.0
+          ENV["CFLAGS"] = "-mmacosx-version-min=14.0"
+          ENV["LDFLAGS"] = "-mmacosx-version-min=14.0"
+          ENV["CXXFLAGS"] = "-mmacosx-version-min=14.0"
     args = %W[
       --prefix=#{prefix}
       --disable-lsmash

@@ -44,6 +44,10 @@ class Zeromq < Formula
     end
 
     ENV["XML_CATALOG_FILES"] = "#{etc}/xml/catalog"
+    ENV["MACOSX_DEPLOYMENT_TARGET"] = 14.0
+    ENV["CFLAGS"] = "-mmacosx-version-min=14.0"
+    ENV["LDFLAGS"] = "-mmacosx-version-min=14.0"
+    ENV["CXXFLAGS"] = "-mmacosx-version-min=14.0"
 
     # Disable libunwind support due to pkg-config problem
     # https://github.com/Homebrew/homebrew-core/pull/35940#issuecomment-454177261

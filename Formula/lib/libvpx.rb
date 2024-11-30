@@ -31,6 +31,10 @@ class Libvpx < Formula
     # If we don't want to create a patch each year, we can consider using
     # `--force-target=#{Hardware::CPU.arch}-darwin#{OS.kernel_version.major}-gcc`
     # to force the target instead.
+    ENV["MACOSX_DEPLOYMENT_TARGET"] = 14.0
+    ENV["CFLAGS"] = "-mmacosx-version-min=14.0"
+    ENV["LDFLAGS"] = "-mmacosx-version-min=14.0"
+    ENV["CXXFLAGS"] = "-mmacosx-version-min=14.0"
     args = %W[
       --prefix=#{prefix}
       --disable-dependency-tracking

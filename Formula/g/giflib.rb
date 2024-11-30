@@ -27,6 +27,11 @@ class Giflib < Formula
   patch :DATA
 
   def install
+      ENV["MACOSX_DEPLOYMENT_TARGET"] = 14.0
+      ENV["CFLAGS"] = "-mmacosx-version-min=14.0"
+      ENV["LDFLAGS"] = "-mmacosx-version-min=14.0"
+      ENV["CXXFLAGS"] = "-mmacosx-version-min=14.0"
+      
     system "make", "all"
     system "make", "install", "PREFIX=#{prefix}"
   end

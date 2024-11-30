@@ -38,6 +38,10 @@ class Zstd < Formula
   uses_from_macos "zlib"
 
   def install
+      ENV["MACOSX_DEPLOYMENT_TARGET"] = 14.0
+      ENV["CFLAGS"] = "-mmacosx-version-min=14.0"
+      ENV["LDFLAGS"] = "-mmacosx-version-min=14.0"
+      ENV["CXXFLAGS"] = "-mmacosx-version-min=14.0"
     # Legacy support is the default after
     # https://github.com/facebook/zstd/commit/db104f6e839cbef94df4df8268b5fecb58471274
     # Set it to `ON` to be explicit about the configuration.

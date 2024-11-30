@@ -30,7 +30,11 @@ class Librist < Formula
   patch :DATA
 
   def install
-    ENV.append "LDFLAGS", "-Wl,-rpath,#{rpath}"
+#    ENV.append "LDFLAGS", "-Wl,-rpath,#{rpath}"
+    ENV["MACOSX_DEPLOYMENT_TARGET"] = 14.0
+    ENV["CFLAGS"] = "-mmacosx-version-min=14.0"
+    ENV["LDFLAGS"] = "-Wl,-rpath,#{rpath},-mmacosx-version-min=14.0"
+    ENV["CXXFLAGS"] = "-mmacosx-version-min=14.0"
 
     system "meson", "setup", "--default-library", "both", "-Dfallback_builtin=false", *std_meson_args, "build", "."
     system "meson", "compile", "-C", "build"

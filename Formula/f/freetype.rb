@@ -29,6 +29,11 @@ class Freetype < Formula
   uses_from_macos "zlib"
 
   def install
+      
+      ENV["MACOSX_DEPLOYMENT_TARGET"] = 14.0
+      ENV["CFLAGS"] = "-mmacosx-version-min=14.0"
+      ENV["LDFLAGS"] = "-mmacosx-version-min=14.0"
+      ENV["CXXFLAGS"] = "-mmacosx-version-min=14.0"
     # This file will be installed to bindir, so we want to avoid embedding the
     # absolute path to the pkg-config shim.
     inreplace "builds/unix/freetype-config.in", "%PKG_CONFIG%", "pkg-config"

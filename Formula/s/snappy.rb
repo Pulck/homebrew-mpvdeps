@@ -36,7 +36,10 @@ class Snappy < Formula
 
   def install
     ENV.llvm_clang if OS.mac? && (DevelopmentTools.clang_build_version <= 1100)
-
+    ENV["MACOSX_DEPLOYMENT_TARGET"] = 14.0
+    ENV["CFLAGS"] = "-mmacosx-version-min=14.0"
+    ENV["LDFLAGS"] = "--mmacosx-version-min=14.0"
+    ENV["CXXFLAGS"] = "-mmacosx-version-min=14.0"
     # Disable tests/benchmarks used for Snappy development
     args = std_cmake_args + %w[
       -DSNAPPY_BUILD_TESTS=OFF

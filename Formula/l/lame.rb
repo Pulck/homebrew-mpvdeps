@@ -31,6 +31,10 @@ class Lame < Formula
   uses_from_macos "ncurses"
 
   def install
+      ENV["MACOSX_DEPLOYMENT_TARGET"] = 14.0
+      ENV["CFLAGS"] = "-mmacosx-version-min=14.0"
+      ENV["LDFLAGS"] = "-mmacosx-version-min=14.0"
+      ENV["CXXFLAGS"] = "-mmacosx-version-min=14.0"
     # Fix undefined symbol error _lame_init_old
     # https://sourceforge.net/p/lame/mailman/message/36081038/
     inreplace "include/libmp3lame.sym", "lame_init_old\n", ""

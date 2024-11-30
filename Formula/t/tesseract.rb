@@ -54,6 +54,10 @@ class Tesseract < Formula
   end
 
   def install
+      ENV["MACOSX_DEPLOYMENT_TARGET"] = 14.0
+      ENV["CFLAGS"] = "-mmacosx-version-min=14.0"
+      ENV["LDFLAGS"] = "-mmacosx-version-min=14.0"
+      ENV["CXXFLAGS"] = "-mmacosx-version-min=14.0"
     # explicitly state leptonica header location, as the makefile defaults to /usr/local/include,
     # which doesn't work for non-default homebrew location
     ENV["LIBLEPT_HEADERSDIR"] = HOMEBREW_PREFIX/"include"

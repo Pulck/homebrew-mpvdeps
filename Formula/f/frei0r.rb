@@ -19,6 +19,10 @@ class Frei0r < Formula
   depends_on "cmake" => :build
 
   def install
+      ENV["MACOSX_DEPLOYMENT_TARGET"] = 14.0
+      ENV["CFLAGS"] = "-mmacosx-version-min=14.0"
+      ENV["LDFLAGS"] = "-mmacosx-version-min=14.0"
+      ENV["CXXFLAGS"] = "-mmacosx-version-min=14.0"
     # Disable opportunistic linking against Cairo
     inreplace "CMakeLists.txt", "find_package (Cairo)", ""
 

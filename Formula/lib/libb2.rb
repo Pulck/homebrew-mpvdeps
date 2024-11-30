@@ -28,15 +28,16 @@ class Libb2 < Formula
     sha256 "35acd6aebc19843f1a2b3a63e880baceb0f5278ab1ace661e57a502d9d78c93c"
   end
 
+  MPV_MINI_VERSION = "14.0"
   def install
     # SSE detection is broken on arm64 macos
     # https://github.com/BLAKE2/libb2/issues/36
     extra_args = []
     extra_args << "--enable-fat" unless Hardware::CPU.arm?
-    ENV["MACOSX_DEPLOYMENT_TARGET"] = 14.0
-    ENV["CFLAGS"] = "-mmacosx-version-min=14.0"
-    ENV["LDFLAGS"] = "-mmacosx-version-min=14.0"
-    ENV["CXXFLAGS"] = "-mmacosx-version-min=14.0"
+    ENV["MACOSX_DEPLOYMENT_TARGET"] = MPV_MINI_VERSION
+    ENV["CFLAGS"] = "-mmacosx-version-min=#{MPV_MINI_VERSION}"
+    ENV["LDFLAGS"] = "-mmacosx-version-min=#{MPV_MINI_VERSION}"
+    ENV["CXXFLAGS"] = "-mmacosx-version-min=#{MPV_MINI_VERSION}"
 
     system "./configure", "--disable-dependency-tracking",
                           "--disable-silent-rules",

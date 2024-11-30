@@ -26,12 +26,13 @@ class Highway < Formula
   # Issue ref: https://github.com/google/highway/issues/2317
   patch :DATA
 
+  MPV_MINI_VERSION = "14.0"
   def install
     ENV.runtime_cpu_detection
-    ENV["MACOSX_DEPLOYMENT_TARGET"] = 14.0
-    ENV["CFLAGS"] = "-mmacosx-version-min=14.0"
-    ENV["LDFLAGS"] = "-mmacosx-version-min=14.0"
-    ENV["CXXFLAGS"] = "-mmacosx-version-min=14.0"
+    ENV["MACOSX_DEPLOYMENT_TARGET"] = MPV_MINI_VERSION
+    ENV["CFLAGS"] = "-mmacosx-version-min=#{MPV_MINI_VERSION}"
+    ENV["LDFLAGS"] = "-mmacosx-version-min=#{MPV_MINI_VERSION}"
+    ENV["CXXFLAGS"] = "-mmacosx-version-min=#{MPV_MINI_VERSION}"
     
     system "cmake", "-S", ".", "-B", "builddir",
                     "-DBUILD_SHARED_LIBS=ON",

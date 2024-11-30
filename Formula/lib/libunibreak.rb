@@ -24,11 +24,12 @@ class Libunibreak < Formula
     sha256 cellar: :any_skip_relocation, x86_64_linux:   "a2662de1e1149d0aa2ed06f7bed26ab1ad27f7fc1bc5aa1689a9a320179b124a"
   end
 
+  MPV_MINI_VERSION = "14.0"
   def install
-      ENV["MACOSX_DEPLOYMENT_TARGET"] = 14.0
-      ENV["CFLAGS"] = "-mmacosx-version-min=14.0"
-      ENV["LDFLAGS"] = "-mmacosx-version-min=14.0"
-      ENV["CXXFLAGS"] = "-mmacosx-version-min=14.0"
+      ENV["MACOSX_DEPLOYMENT_TARGET"] = MPV_MINI_VERSION
+      ENV["CFLAGS"] = "-mmacosx-version-min=#{MPV_MINI_VERSION}"
+      ENV["LDFLAGS"] = "-mmacosx-version-min=#{MPV_MINI_VERSION}"
+      ENV["CXXFLAGS"] = "-mmacosx-version-min=#{MPV_MINI_VERSION}"
     system "./configure", *std_configure_args, "--disable-silent-rules"
     system "make", "install"
   end

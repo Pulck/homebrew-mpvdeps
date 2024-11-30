@@ -36,6 +36,7 @@ class Zeromq < Formula
 
   depends_on "libsodium"
 
+  MPV_MINI_VERSION = "14.0"
   def install
     # Work around "error: no member named 'signbit' in the global namespace"
     if OS.mac? && MacOS.version == :high_sierra
@@ -44,10 +45,10 @@ class Zeromq < Formula
     end
 
     ENV["XML_CATALOG_FILES"] = "#{etc}/xml/catalog"
-    ENV["MACOSX_DEPLOYMENT_TARGET"] = 14.0
-    ENV["CFLAGS"] = "-mmacosx-version-min=14.0"
-    ENV["LDFLAGS"] = "-mmacosx-version-min=14.0"
-    ENV["CXXFLAGS"] = "-mmacosx-version-min=14.0"
+    ENV["MACOSX_DEPLOYMENT_TARGET"] = MPV_MINI_VERSION
+    ENV["CFLAGS"] = "-mmacosx-version-min=#{MPV_MINI_VERSION}"
+    ENV["LDFLAGS"] = "-mmacosx-version-min=#{MPV_MINI_VERSION}"
+    ENV["CXXFLAGS"] = "-mmacosx-version-min=#{MPV_MINI_VERSION}"
 
     # Disable libunwind support due to pkg-config problem
     # https://github.com/Homebrew/homebrew-core/pull/35940#issuecomment-454177261

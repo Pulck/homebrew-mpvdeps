@@ -38,11 +38,12 @@ class Sdl2 < Formula
     depends_on "xinput"
   end
 
+  MPV_MINI_VERSION = "14.0"
   def install
-      ENV["MACOSX_DEPLOYMENT_TARGET"] = 14.0
-      ENV["CFLAGS"] = "-mmacosx-version-min=14.0"
-      ENV["LDFLAGS"] = "-mmacosx-version-min=14.0"
-      ENV["CXXFLAGS"] = "-mmacosx-version-min=14.0"
+      ENV["MACOSX_DEPLOYMENT_TARGET"] = MPV_MINI_VERSION
+      ENV["CFLAGS"] = "-mmacosx-version-min=#{MPV_MINI_VERSION}"
+      ENV["LDFLAGS"] = "-mmacosx-version-min=#{MPV_MINI_VERSION}"
+      ENV["CXXFLAGS"] = "-mmacosx-version-min=#{MPV_MINI_VERSION}"
     # We have to do this because most build scripts assume that all SDL modules
     # are installed to the same prefix. Consequently SDL stuff cannot be
     # keg-only but I doubt that will be needed.

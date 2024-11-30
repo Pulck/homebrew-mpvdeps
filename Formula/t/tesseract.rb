@@ -53,11 +53,12 @@ class Tesseract < Formula
     sha256 "36f772980ff17c66a767f584a0d80bf2302a1afa585c01a226c1863afcea1392"
   end
 
+  MPV_MINI_VERSION = "14.0"
   def install
-      ENV["MACOSX_DEPLOYMENT_TARGET"] = 14.0
-      ENV["CFLAGS"] = "-mmacosx-version-min=14.0"
-      ENV["LDFLAGS"] = "-mmacosx-version-min=14.0"
-      ENV["CXXFLAGS"] = "-mmacosx-version-min=14.0"
+      ENV["MACOSX_DEPLOYMENT_TARGET"] = MPV_MINI_VERSION
+      ENV["CFLAGS"] = "-mmacosx-version-min=#{MPV_MINI_VERSION}"
+      ENV["LDFLAGS"] = "-mmacosx-version-min=#{MPV_MINI_VERSION}"
+      ENV["CXXFLAGS"] = "-mmacosx-version-min=#{MPV_MINI_VERSION}"
     # explicitly state leptonica header location, as the makefile defaults to /usr/local/include,
     # which doesn't work for non-default homebrew location
     ENV["LIBLEPT_HEADERSDIR"] = HOMEBREW_PREFIX/"include"

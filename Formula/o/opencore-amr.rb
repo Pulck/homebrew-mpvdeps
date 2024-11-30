@@ -24,11 +24,12 @@ class OpencoreAmr < Formula
     sha256 cellar: :any_skip_relocation, x86_64_linux:   "63626c6d52b176f1289a792a8dea8845104f85e86538054e88efadbf920a9835"
   end
 
+  MPV_MINI_VERSION = "14.0"
   def install
-      ENV["MACOSX_DEPLOYMENT_TARGET"] = 14.0
-      ENV["CFLAGS"] = "-mmacosx-version-min=14.0"
-      ENV["LDFLAGS"] = "-mmacosx-version-min=14.0"
-      ENV["CXXFLAGS"] = "-mmacosx-version-min=14.0"
+      ENV["MACOSX_DEPLOYMENT_TARGET"] = MPV_MINI_VERSION
+      ENV["CFLAGS"] = "-mmacosx-version-min=#{MPV_MINI_VERSION}"
+      ENV["LDFLAGS"] = "-mmacosx-version-min=#{MPV_MINI_VERSION}"
+      ENV["CXXFLAGS"] = "-mmacosx-version-min=#{MPV_MINI_VERSION}"
     system "./configure", "--disable-dependency-tracking", "--prefix=#{prefix}"
     system "make", "install"
   end

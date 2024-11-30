@@ -32,11 +32,12 @@ class Harfbuzz < Formula
     sha256 "9535d35dab9e002963eef56757c46881f6b3d3b27db24eefcc80929781856c77"
   end
 
+  MPV_MINI_VERSION = "14.0"
   def install
-      ENV["MACOSX_DEPLOYMENT_TARGET"] = 14.0
-      ENV["CFLAGS"] = "-mmacosx-version-min=14.0"
-      ENV["LDFLAGS"] = "-mmacosx-version-min=14.0"
-      ENV["CXXFLAGS"] = "-mmacosx-version-min=14.0"
+      ENV["MACOSX_DEPLOYMENT_TARGET"] = MPV_MINI_VERSION
+      ENV["CFLAGS"] = "-mmacosx-version-min=#{MPV_MINI_VERSION}"
+      ENV["LDFLAGS"] = "-mmacosx-version-min=#{MPV_MINI_VERSION}"
+      ENV["CXXFLAGS"] = "-mmacosx-version-min=#{MPV_MINI_VERSION}"
     args = %w[
       --default-library=both
       -Dcairo=enabled

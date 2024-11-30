@@ -16,11 +16,12 @@ class Libunistring < Formula
     sha256 cellar: :any_skip_relocation, x86_64_linux:  "25ff65379463fe4a51008a36c45a963ebc8d13d054ce606e3fbb6635ea634311"
   end
 
+  MPV_MINI_VERSION = "14.0"
   def install
-      ENV["MACOSX_DEPLOYMENT_TARGET"] = 14.0
-      ENV["CFLAGS"] = "-mmacosx-version-min=14.0"
-      ENV["LDFLAGS"] = "-mmacosx-version-min=14.0"
-      ENV["CXXFLAGS"] = "-mmacosx-version-min=14.0"
+      ENV["MACOSX_DEPLOYMENT_TARGET"] = MPV_MINI_VERSION
+      ENV["CFLAGS"] = "-mmacosx-version-min=#{MPV_MINI_VERSION}"
+      ENV["LDFLAGS"] = "-mmacosx-version-min=#{MPV_MINI_VERSION}"
+      ENV["CXXFLAGS"] = "-mmacosx-version-min=#{MPV_MINI_VERSION}"
     # macOS iconv implementation is slightly broken since Sonoma.
     # This is also why we skip `make check`.
     # https://github.com/coreutils/gnulib/commit/bab130878fe57086921fa7024d328341758ed453

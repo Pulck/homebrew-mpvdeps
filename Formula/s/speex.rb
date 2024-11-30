@@ -28,12 +28,13 @@ class Speex < Formula
   depends_on "pkgconf" => :build
   depends_on "libogg"
 
+  MPV_MINI_VERSION = "14.0"
   def install
     ENV.deparallelize
-    ENV["MACOSX_DEPLOYMENT_TARGET"] = 14.0
-    ENV["CFLAGS"] = "-mmacosx-version-min=14.0"
-    ENV["LDFLAGS"] = "-mmacosx-version-min=14.0"
-    ENV["CXXFLAGS"] = "-mmacosx-version-min=14.0"
+    ENV["MACOSX_DEPLOYMENT_TARGET"] = MPV_MINI_VERSION
+    ENV["CFLAGS"] = "-mmacosx-version-min=#{MPV_MINI_VERSION}"
+    ENV["LDFLAGS"] = "-mmacosx-version-min=#{MPV_MINI_VERSION}"
+    ENV["CXXFLAGS"] = "-mmacosx-version-min=#{MPV_MINI_VERSION}"
     system "./configure", *std_configure_args
     system "make", "install"
   end

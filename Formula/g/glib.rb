@@ -58,6 +58,7 @@ class Glib < Formula
     sha256 "d81c9e8296ec5b53b4ead6917f174b06026eeb0c671dfffc4965b2271fb6a82c"
   end
 
+  MPV_MINI_VERSION = "14.0"
   def install
     python = "python3.13"
     # Avoid the sandbox violation when an empty directory is created outside of the formula prefix.
@@ -69,10 +70,10 @@ class Glib < Formula
     # build patch for `ld: missing LC_LOAD_DYLIB (must link with at least libSystem.dylib) \
     # in ../gobject-introspection-1.80.1/build/tests/offsets/liboffsets-1.0.1.dylib`
 #    ENV.append "LDFLAGS", "-Wl,-ld_classic" if OS.mac? && MacOS.version == :ventura
-    ENV["MACOSX_DEPLOYMENT_TARGET"] = 14.0
-    ENV["CFLAGS"] = "-mmacosx-version-min=14.0"
-    ENV["LDFLAGS"] = "-Wl,-ld_classic,-mmacosx-version-min=14.0"
-    ENV["CXXFLAGS"] = "-mmacosx-version-min=14.0"
+    ENV["MACOSX_DEPLOYMENT_TARGET"] = MPV_MINI_VERSION
+    ENV["CFLAGS"] = "-mmacosx-version-min=#{MPV_MINI_VERSION}"
+    ENV["LDFLAGS"] = "-Wl,-ld_classic,-mmacosx-version-min=#{MPV_MINI_VERSION}"
+    ENV["CXXFLAGS"] = "-mmacosx-version-min=#{MPV_MINI_VERSION}"
 
     # Disable dtrace; see https://trac.macports.org/ticket/30413
     # and https://gitlab.gnome.org/GNOME/glib/-/issues/653

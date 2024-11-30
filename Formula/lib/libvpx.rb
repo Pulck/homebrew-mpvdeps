@@ -22,6 +22,7 @@ class Libvpx < Formula
   # Add Sequoia support (remove patch when supported in a `libvpx` version).
   patch :DATA
 
+  MPV_MINI_VERSION = "14.0"
   def install
     ENV.runtime_cpu_detection
     # NOTE: `libvpx` will fail to build on new macOS versions before the
@@ -31,10 +32,10 @@ class Libvpx < Formula
     # If we don't want to create a patch each year, we can consider using
     # `--force-target=#{Hardware::CPU.arch}-darwin#{OS.kernel_version.major}-gcc`
     # to force the target instead.
-    ENV["MACOSX_DEPLOYMENT_TARGET"] = 14.0
-    ENV["CFLAGS"] = "-mmacosx-version-min=14.0"
-    ENV["LDFLAGS"] = "-mmacosx-version-min=14.0"
-    ENV["CXXFLAGS"] = "-mmacosx-version-min=14.0"
+    ENV["MACOSX_DEPLOYMENT_TARGET"] = MPV_MINI_VERSION
+    ENV["CFLAGS"] = "-mmacosx-version-min=#{MPV_MINI_VERSION}"
+    ENV["LDFLAGS"] = "-mmacosx-version-min=#{MPV_MINI_VERSION}"
+    ENV["CXXFLAGS"] = "-mmacosx-version-min=#{MPV_MINI_VERSION}"
     args = %W[
       --prefix=#{prefix}
       --disable-dependency-tracking

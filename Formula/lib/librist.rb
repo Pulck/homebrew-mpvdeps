@@ -29,12 +29,13 @@ class Librist < Formula
   # remove brew setup
   patch :DATA
 
+  MPV_MINI_VERSION = "14.0"
   def install
 #    ENV.append "LDFLAGS", "-Wl,-rpath,#{rpath}"
-    ENV["MACOSX_DEPLOYMENT_TARGET"] = 14.0
-    ENV["CFLAGS"] = "-mmacosx-version-min=14.0"
-    ENV["LDFLAGS"] = "-Wl,-rpath,#{rpath},-mmacosx-version-min=14.0"
-    ENV["CXXFLAGS"] = "-mmacosx-version-min=14.0"
+    ENV["MACOSX_DEPLOYMENT_TARGET"] = MPV_MINI_VERSION
+    ENV["CFLAGS"] = "-mmacosx-version-min=#{MPV_MINI_VERSION}"
+    ENV["LDFLAGS"] = "-Wl,-rpath,#{rpath},-mmacosx-version-min=#{MPV_MINI_VERSION}"
+    ENV["CXXFLAGS"] = "-mmacosx-version-min=#{MPV_MINI_VERSION}"
 
     system "meson", "setup", "--default-library", "both", "-Dfallback_builtin=false", *std_meson_args, "build", "."
     system "meson", "compile", "-C", "build"

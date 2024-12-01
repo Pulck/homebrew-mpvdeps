@@ -52,6 +52,7 @@ class Libplacebo < Formula
   depends_on "shaderc"
   depends_on "vulkan-loader"
 
+  MPV_MINI_VERSION = "14.0"
   def install
     resources.each do |r|
       # Override resource name to use expected directory name
@@ -64,6 +65,8 @@ class Libplacebo < Formula
 
       r.stage(Pathname("3rdparty")/dir_name)
     end
+    
+    ENV["MACOSX_DEPLOYMENT_TARGET"] = MPV_MINI_VERSION
 
     system "meson", "setup", "build",
                     "-Dvulkan-registry=#{Formula["vulkan-headers"].share}/vulkan/registry/vk.xml",

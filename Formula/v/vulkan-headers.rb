@@ -17,11 +17,13 @@ class VulkanHeaders < Formula
 
   depends_on "cmake" => :build
 
+  MPV_MINI_VERSION = "14.0"
   def install
     # Ensure bottles are uniform.
     inreplace "include/vulkan/vulkan.hpp" do |s|
       s.gsub! "/usr/local", HOMEBREW_PREFIX
     end
+    ENV["MACOSX_DEPLOYMENT_TARGET"] = MPV_MINI_VERSION
 
     system "cmake", "-S", ".", "-B", "build", *std_cmake_args
     system "cmake", "--install", "build"

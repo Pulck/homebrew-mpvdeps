@@ -44,7 +44,10 @@ class Libdvdnav < Formula
   depends_on "pkgconf" => :build
   depends_on "libdvdread"
 
+          MPV_MINI_VERSION = "14.0"
   def install
+          ENV["MACOSX_DEPLOYMENT_TARGET"] = MPV_MINI_VERSION
+
     system "autoreconf", "--force", "--install", "--verbose" if build.head?
     system "./configure", *std_configure_args
     system "make", "install"

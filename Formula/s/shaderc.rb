@@ -59,10 +59,13 @@ class Shaderc < Formula
   # upstream bug report, https://github.com/google/shaderc/issues/1413
   patch :DATA
 
+  MPV_MINI_VERSION = "14.0"
   def install
     resources.each do |res|
       res.stage(buildpath/"third_party"/res.name)
     end
+    ENV["MACOSX_DEPLOYMENT_TARGET"] = MPV_MINI_VERSION
+
 
     # Avoid installing packages that conflict with other formulae.
     inreplace "third_party/CMakeLists.txt", "${SHADERC_SKIP_INSTALL}", "ON"

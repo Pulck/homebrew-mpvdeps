@@ -32,7 +32,9 @@ class Libdvdcss < Formula
     depends_on "libtool" => :build
   end
 
+          MPV_MINI_VERSION = "14.0"
   def install
+          ENV["MACOSX_DEPLOYMENT_TARGET"] = MPV_MINI_VERSION
     system "autoreconf", "-if" if build.head?
     system "./configure", "--prefix=#{prefix}", "--disable-dependency-tracking"
     system "make", "install"

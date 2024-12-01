@@ -32,7 +32,9 @@ class VulkanLoader < Formula
     depends_on "wayland"
   end
 
+  MPV_MINI_VERSION = "14.0"
   def install
+      ENV["MACOSX_DEPLOYMENT_TARGET"] = MPV_MINI_VERSION
     system "cmake", "-S", ".", "-B", "build",
                     "-DVULKAN_HEADERS_INSTALL_DIR=#{Formula["vulkan-headers"].prefix}",
                     "-DCMAKE_INSTALL_INCLUDEDIR=#{Formula["vulkan-headers"].include}",

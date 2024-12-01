@@ -42,7 +42,9 @@ class Libdvdread < Formula
 
   depends_on "libdvdcss"
 
+          MPV_MINI_VERSION = "14.0"
   def install
+          ENV["MACOSX_DEPLOYMENT_TARGET"] = MPV_MINI_VERSION
     ENV.append "CFLAGS", "-DHAVE_DVDCSS_DVDCSS_H"
     ENV.append "LDFLAGS", "-ldvdcss"
 

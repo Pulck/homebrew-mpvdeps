@@ -17,16 +17,15 @@ class Libvidstab < Formula
     sha256 cellar: :any,                 big_sur:        "2b7d9891009c53a925e971b600bad2a43e5bcca062119b9080e1c5b59e2e25b0"
     sha256 cellar: :any_skip_relocation, x86_64_linux:   "d87451266aa81a807919bb25dec5cb85e2e79eca8fa768dba8c7b74f06e11be9"
   end
-  
-  ENV["MACOSX_DEPLOYMENT_TARGET"] = MPV_MINI_VERSION
-  ENV["CFLAGS"] = "-mmacosx-version-min=#{MPV_MINI_VERSION}"
-  ENV["LDFLAGS"] = "-mmacosx-version-min=#{MPV_MINI_VERSION}"
-  ENV["CXXFLAGS"] = "-mmacosx-version-min=#{MPV_MINI_VERSION}"
 
   depends_on "cmake" => :build
 
   MPV_MINI_VERSION = "14.0"
   def install
+    ENV["MACOSX_DEPLOYMENT_TARGET"] = MPV_MINI_VERSION
+    ENV["CFLAGS"] = "-mmacosx-version-min=#{MPV_MINI_VERSION}"
+    ENV["LDFLAGS"] = "-mmacosx-version-min=#{MPV_MINI_VERSION}"
+    ENV["CXXFLAGS"] = "-mmacosx-version-min=#{MPV_MINI_VERSION}"
     system "cmake", ".", "-DUSE_OMP=OFF", *std_cmake_args
     system "make", "install"
   end

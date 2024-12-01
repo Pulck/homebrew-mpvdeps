@@ -39,7 +39,7 @@ class Snappy < Formula
     ENV.llvm_clang if OS.mac? && (DevelopmentTools.clang_build_version <= 1100)
     ENV["MACOSX_DEPLOYMENT_TARGET"] = MPV_MINI_VERSION
     ENV["CFLAGS"] = "-mmacosx-version-min=#{MPV_MINI_VERSION}"
-    ENV["LDFLAGS"] = "--mmacosx-version-min=#{MPV_MINI_VERSION}"
+    ENV["LDFLAGS"] = "-mmacosx-version-min=#{MPV_MINI_VERSION}"
     ENV["CXXFLAGS"] = "-mmacosx-version-min=#{MPV_MINI_VERSION}"
     # Disable tests/benchmarks used for Snappy development
     args = std_cmake_args + %w[

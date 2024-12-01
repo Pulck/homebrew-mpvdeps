@@ -36,7 +36,7 @@ class Libpng < Formula
       ENV["CFLAGS"] = "-mmacosx-version-min=#{MPV_MINI_VERSION}"
       ENV["LDFLAGS"] = "-mmacosx-version-min=#{MPV_MINI_VERSION}"
       ENV["CXXFLAGS"] = "-mmacosx-version-min=#{MPV_MINI_VERSION}"
-    "
+    
     system "./configure", "--disable-dependency-tracking",
                           "--disable-silent-rules",
                           "--prefix=#{prefix}"

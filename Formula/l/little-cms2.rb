@@ -36,7 +36,7 @@ class LittleCms2 < Formula
       ENV["CFLAGS"] = "-mmacosx-version-min=#{MPV_MINI_VERSION}"
       ENV["LDFLAGS"] = "-mmacosx-version-min=#{MPV_MINI_VERSION}"
       ENV["CXXFLAGS"] = "-mmacosx-version-min=#{MPV_MINI_VERSION}"
-    "
+    
     system "./configure", *std_configure_args
     system "make", "install"
 

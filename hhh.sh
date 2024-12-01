@@ -1,0 +1,115 @@
+#!/bin/bash
+
+deps=(
+a/aom.rb
+    a/aribb24.rb
+    b/brotli.rb
+    c/cairo.rb
+    c/cjson.rb
+    d/dav1d.rb
+    f/ffmpeg.rb
+    f/fontconfig.rb
+    f/freetype.rb
+    f/frei0r.rb
+    f/fribidi.rb
+    g/gettext.rb
+    g/giflib.rb
+    g/glib.rb
+    g/gmp.rb
+    g/gnutls.rb
+    g/graphite2.rb
+    h/harfbuzz.rb
+    h/highway.rb
+    i/icu4c@74.rb
+    i/imath.rb
+    j/jpeg-turbo.rb
+    j/jpeg-xl.rb
+    l/lame.rb
+    l/leptonica.rb
+    l/little-cms2.rb
+    l/lz4.rb
+    lib/libarchive.rb
+    lib/libass.rb
+    lib/libb2.rb
+    lib/libbluray.rb
+    lib/libevent.rb
+    lib/libice.rb
+    lib/libidn2.rb
+    lib/libmicrohttpd.rb
+    lib/libnghttp2.rb
+    lib/libogg.rb
+    lib/libpng.rb
+    lib/librist.rb
+    lib/libsamplerate.rb
+    lib/libsndfile.rb
+    lib/libsodium.rb
+    lib/libsoxr.rb
+    lib/libssh.rb
+    lib/libtasn1.rb
+    lib/libtiff.rb
+    lib/libtool.rb
+    lib/libunibreak.rb
+    lib/libunistring.rb
+    lib/libvidstab.rb
+    lib/libvmaf.rb
+    lib/libvorbis.rb
+    lib/libvpx.rb
+    lib/libx11.rb
+    lib/libxau.rb
+    lib/libxcb.rb
+    lib/libxcursor.rb
+    lib/libxdmcp.rb
+    lib/libxext.rb
+    lib/libxfixes.rb
+    lib/libxinerama.rb
+    lib/libxrandr.rb
+    lib/libxrender.rb
+    lib/libxscrnsaver.rb
+    lib/libxxf86vm.rb
+    m/mbedtls.rb
+    n/nettle.rb
+    o/opencore-amr.rb
+    o/openexr.rb
+    o/openjpeg.rb
+    o/openssl@3.rb
+    o/opus.rb
+    o/orc.rb
+     p/p11-kit.rb
+     p/pango.rb
+     p/pcre2.rb
+     p/pulseaudio.rb
+     r/rav1e.rb
+     r/rubberband.rb
+     s/sdl2.rb
+     s/snap.rb
+     s/snappy.rb
+     s/speex.rb
+     s/speexdsp.rb
+     s/srt.rb
+     s/svt-av1.rb
+     t/tesseract.rb
+     t/theora.rb
+     u/unbound.rb
+     w/webp.rb
+     x/x264.rb
+     x/x265.rb
+     x/xinput.rb
+     x/xorgproto.rb
+     x/xvid.rb
+    x/xz.rb
+    z/zeromq.rb
+    z/zimg.rb
+    z/zlib.rb
+    z/zstd.rb
+)
+
+for var in ${deps[@]};
+do
+#find ${var} -exec sed -i '' 's/def install/MPV_MINI_VERSION = 14.0\n  def install/g' {} +
+#find ${var} -exec sed -i '' 's/ENV\["MACOSX_DEPLOYMENT_TARGET"\] = 14.0/ENV\["MACOSX_DEPLOYMENT_TARGET"\] = MPV_MINI_VERSION/g' {} +
+#find ${var} -exec sed -i '' 's/-mmacosx-version-min=14.0/-mmacosx-version-min=#{MPV_MINI_VERSION}/g' {} +
+
+find ${var} -exec sed -i '' 's/MPV_MINI_VERSION = 14.0/MPV_MINI_VERSION = \"14.0\"/g' {} +
+done
+
+

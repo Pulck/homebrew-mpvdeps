@@ -71,9 +71,9 @@ class Glib < Formula
     # in ../gobject-introspection-1.80.1/build/tests/offsets/liboffsets-1.0.1.dylib`
 #    ENV.append "LDFLAGS", "-Wl,-ld_classic" if OS.mac? && MacOS.version == :ventura
     ENV["MACOSX_DEPLOYMENT_TARGET"] = MPV_MINI_VERSION
-    ENV["CFLAGS"] = "-mmacosx-version-min=#{MPV_MINI_VERSION}"
-    ENV["LDFLAGS"] = "-Wl,-ld_classic,-mmacosx-version-min=#{MPV_MINI_VERSION}"
-    ENV["CXXFLAGS"] = "-mmacosx-version-min=#{MPV_MINI_VERSION}"
+#    ENV["CFLAGS"] = "-mmacosx-version-min=#{MPV_MINI_VERSION}"
+#    ENV["LDFLAGS"] = "-Wl,-ld_classic,-mmacosx-version-min=#{MPV_MINI_VERSION}"
+#    ENV["CXXFLAGS"] = "-mmacosx-version-min=#{MPV_MINI_VERSION}"
 
     # Disable dtrace; see https://trac.macports.org/ticket/30413
     # and https://gitlab.gnome.org/GNOME/glib/-/issues/653

@@ -19,8 +19,9 @@ class Mpg123 < Formula
     sha256 ventura:       "f70ea7714dfcd65735fb1bf0215f1a692364d4ad76f30f080ea4beb8949027fc"
     sha256 x86_64_linux:  "b36a86bf0efc22e7bff55c0a241014848c7eeda1b343a4479d8cadea62529409"
   end
-
+  MPV_MINI_VERSION = "14.0"
   def install
+    ENV["MACOSX_DEPLOYMENT_TARGET"] = MPV_MINI_VERSION
     args = %w[
       --with-module-suffix=.so
       --enable-static

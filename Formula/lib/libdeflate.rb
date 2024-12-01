@@ -15,8 +15,9 @@ class Libdeflate < Formula
   end
 
   depends_on "cmake" => :build
-
+  MPV_MINI_VERSION = "14.0"
   def install
+    ENV["MACOSX_DEPLOYMENT_TARGET"] = MPV_MINI_VERSION
     system "cmake", "-S", ".", "-B", "build", *std_cmake_args
     system "cmake", "--build", "build"
     system "cmake", "--install", "build"
